@@ -25,7 +25,7 @@ export function createArrList(arr) {
      const li = document.createElement('li');
      li.textContent = item;
      
-     li.addEventListener('mouseenter', function() {
+     li.addEventListener('mouseover', function() {
        this.setAttribute('title', this.textContent);
      });
      
@@ -46,13 +46,13 @@ export function createLink() {
    const link = document.createElement('a');
    link.href = 'https://tensor.ru/';
    link.textContent = 'tensor';
-   let clicked = false;
+   let clickCount = 0;
    
    link.addEventListener('click', function(e) {
-     if (!clicked) {
-       e.preventDefault(); 
+     clickCount++;
+     if (clickCount === 1) {
+       e.preventDefault();
        this.textContent += ` ${this.href}`;
-       clicked = true;
      }
    });
    
@@ -71,7 +71,6 @@ export function createLink() {
       Клик по новому li также добавляет восклицательный знак в конец текста.
 */
 export function createList() {
-   const div = document.createElement('div');
    const ul = document.createElement('ul');
    const li = document.createElement('li');
    li.textContent = 'Пункт';
@@ -80,7 +79,7 @@ export function createList() {
    button.textContent = 'Добавить пункт';
    
    ul.addEventListener('click', function(e) {
-     if (e.target.tagName === 'LI') {
+     if (e.target.tagName === 'li') {
        e.target.textContent += '!';
      }
    });
@@ -92,7 +91,6 @@ export function createList() {
    });
    
    ul.appendChild(li);
-   div.appendChild(ul);
-   div.appendChild(button);
-   document.body.appendChild(div);
+   document.body.appendChild(ul);
+   document.body.appendChild(button);
  }
