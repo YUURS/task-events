@@ -2,19 +2,15 @@
    1. Создайте функцию createButton(). Необходимо, чтобы эта функция осуществила вставку в body тег button с текстом: "Удали меня".
       При клике по button удалить этот button.
 */
-export function createArrList(arr) {
-   const ul = document.createElement('ul');
+export function createButton() {
+   const button = document.createElement('button');
+   button.textContent = 'Удали меня';
    
-   arr.forEach(item => {
-     const li = document.createElement('li');
-     li.textContent = item;
-     
-     li.setAttribute('title', item);
-     
-     ul.appendChild(li);
+   button.addEventListener('click', function() {
+     this.remove();
    });
    
-   document.body.appendChild(ul);
+   document.body.appendChild(button);
  }
 
 /*
@@ -29,9 +25,7 @@ export function createArrList(arr) {
      const li = document.createElement('li');
      li.textContent = item;
      
-     li.addEventListener('mouseenter', function() {
-       this.setAttribute('title', this.textContent);
-     });
+     li.setAttribute('title', item);
      
      ul.appendChild(li);
    });
@@ -75,6 +69,7 @@ export function createLink() {
       Клик по новому li также добавляет восклицательный знак в конец текста.
 */
 export function createList() {
+   const container = document.createElement('div');
    const ul = document.createElement('ul');
    const li = document.createElement('li');
    li.textContent = 'Пункт';
@@ -95,6 +90,7 @@ export function createList() {
    });
    
    ul.appendChild(li);
-   document.body.appendChild(ul);
-   document.body.appendChild(button);
+   container.appendChild(ul);
+   container.appendChild(button);
+   document.body.appendChild(container);
  }
