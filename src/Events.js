@@ -25,7 +25,9 @@ export function createArrList(arr) {
      const li = document.createElement('li');
      li.textContent = item;
      
-     li.setAttribute('title', item);
+     li.addEventListener('mouseenter', function() {
+       this.setAttribute('title', this.textContent);
+     });
      
      ul.appendChild(li);
    });
@@ -69,7 +71,7 @@ export function createLink() {
       Клик по новому li также добавляет восклицательный знак в конец текста.
 */
 export function createList() {
-   const container = document.createElement('div');
+   const div = document.createElement('div');
    const ul = document.createElement('ul');
    const li = document.createElement('li');
    li.textContent = 'Пункт';
@@ -90,7 +92,7 @@ export function createList() {
    });
    
    ul.appendChild(li);
-   container.appendChild(ul);
-   container.appendChild(button);
-   document.body.appendChild(container);
+   div.appendChild(ul);
+   div.appendChild(button);
+   document.body.appendChild(div);
  }
